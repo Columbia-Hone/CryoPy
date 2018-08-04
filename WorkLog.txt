@@ -3,5 +3,5 @@ Install Python3.6.6 through Anaconda or Miniconda
 Install VSCode
 Install Python extension to VSCode
 Install pyvisa with pip
-install NI Back end NIVISA1700full.exe
+install NI Back end NIVISA1800full.exe
 Install NI-488.2 17.6.0 driver for the GPIB-USB connector
