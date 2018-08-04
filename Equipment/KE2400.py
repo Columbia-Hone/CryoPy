@@ -1,7 +1,9 @@
 import visa
-import Equipment
+from equipment import Keithley, Source, Meter, Equipment
 
-class KE2400(Source, Meter):
+class KE2400(Keithley):
+    def __init__(self, address, id, io):
+        super().__init__(address, id, io)
     def setV(self, Vstart, Vend, increment, delay):
         pass
     def readV(self):
