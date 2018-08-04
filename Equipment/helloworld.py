@@ -1,7 +1,8 @@
 import visa
-import Equipment
+import equipment
 
 rm = visa.ResourceManager()
-print(rm.list_resources(1))
-inst = rm.open_resource('GPIB0::8::INSTR')
-print(inst.query("*IDN?"))
+racks = rm.list_resources()
+print(racks)
+toollist = [Equipment(rack, rm) for rack in racks if rack[0:3] in 'GPIB']
+print(toollist.getID)
