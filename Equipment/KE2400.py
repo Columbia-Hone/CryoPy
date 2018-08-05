@@ -1,5 +1,4 @@
 import visa
-from equipment import Keithley, Source, Meter, Equipment
 
 class KE2400(Keithley):
     def __init__(self, address, id, io):
