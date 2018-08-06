@@ -21,11 +21,13 @@ if __name__ ==  "__main__":
             print(toolID)
             listEquip.append(initEquip(tool, rack, toolID))
 
-    print(listID)
-    print((listEquip[1].io.query_ascii_values(":READ?")[0]))
-    print(listEquip[1].readV())
-    print(listEquip[1].nowV)
+    print(listID[0])
+    
+    print((listEquip[0].io.query("SLVL ?")))
+   
+    print(listEquip[1].readV()+1)
+  
     #print(str(listEquip[1].io.query(":SOUR:VOLT:MODE?")))
-    listEquip[1].setV(12)
-    listEquip[1].rampV(0.1, -0.1, 0.005 ,0.5)
+    listEquip[1].setV(1)
+    listEquip[0].rampV(0, 0.000, 0.001 ,0.5)
     #print(listEquip[1].io.read("READ?"))
