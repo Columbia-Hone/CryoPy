@@ -46,10 +46,20 @@ class SR830(Source, Meter):
         # 20:10mV/nA, 21:20mV/nA, 22:50mV/nA, 23:100mV/nA, 24:200mV/nA, 25:500mV/nA
         # 26: 1V/uA
         self.io.write("SENS " + str(range))
-    def autoRange(self):
+    def autoRangehigh(self):
+        self.io.write("SENS 26")
+        time.sleep(.3)
         curVal = self.read()[0]
-        
-        curRange = self.io.query_ascii_values("SENS ?")
+        rangeVal = np.where(self.rangelist > (2*abs(curVal)))
+        self.io.write("SENS " +str(rangeVal[0][0]))
+        time.sleep(.3)
+        return self.read()[0]
+    def autoRangelow(self):
+        curVal = self.read()[0]
+        rangeVal = np.where(self.rangelist > (2*abs(curVal)))
+        self.io.write("SENS " +str(rangeVal[0][0]))
+        time.sleep(.3)
+        return self.read()[0]
 
     def setSF(self, sf):
         # sets sample frequency, which should be always at least 2x your  signal frequency
